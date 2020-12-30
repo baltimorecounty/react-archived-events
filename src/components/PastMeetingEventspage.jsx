@@ -1,29 +1,25 @@
 import React, { useEffect } from "react";
 
 import usePastMeetingEvents from "../hooks/usePastMeetingEvents";
-// import PrimaryDepartmentClosing from "./PrimaryDepartmentClosing";
 import PastMETable from "./PastMETable";
 import PastMEHeaders from "./PastMEHeaders";
 import PastMERows from "./PastMERows";
-// import ClosingsSideBar from "./ClosingsSideBar";
-//import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 
 const PastMeetingEventsPage = props => {
   const [
     { pastMeetingEvents = [], hasError, isLoading }
   ] = usePastMeetingEvents();
 
-  // const {
-  //   programHeader,
-  //   informationHeader,
-  //   informationAbout
-  // } = window.closings;
+  const {
+    informationHeader,
+    informationAbout
+  } = window.pastmeetings;
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
   const { records = [] } = pastMeetingEvents;
-  console.log('records:' +  JSON.stringify(records))
   if (hasError) {
     return (
       <p>
@@ -41,10 +37,8 @@ const PastMeetingEventsPage = props => {
               <p>{`Loading Past Meeting and Events Information...`}</p>
             ) : (
               <div id="dg_main-content">
-                {/* <PrimaryDepartmentClosing data={records} />
                 {ReactHtmlParser(informationHeader)}
                 {ReactHtmlParser(informationAbout)} 
-                {ReactHtmlParser(programHeader)}*/}
                 <PastMETable id="responsive-main-table" className="display">
                   <PastMEHeaders />
                   <PastMERows data={records} />
@@ -53,7 +47,6 @@ const PastMeetingEventsPage = props => {
             )}
           </div>
           <div className="col-md-4 col-sm-12">
-            {/* <ClosingsSideBar /> */}
           </div>
         </div>
       </div>

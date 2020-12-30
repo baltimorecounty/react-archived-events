@@ -2,7 +2,7 @@ import { Config } from "@baltimorecounty/javascript-utilities";
 
 const { setConfig } = Config;
 
-const apiPath = "/api/hub/structuredContent/weather?recordsPerPage=1000";
+const apiPath = "api/hub/structuredContent/Events";
 const testApiRoot = `https://testservices.baltimorecountymd.gov${apiPath}`;
 const prodApiRoot = `https://services.baltimorecountymd.gov${apiPath}`;
 
@@ -15,7 +15,7 @@ const Run = () => {
   const localApiRoot =
     window.location.hostname.indexOf("beta") > -1
       ? testApiRoot
-      : `https://localhost:44393/api/Events?page=0&recordsPerPage=10` ;//`//localhost:54727/${apiPath}`;
+      : `//localhost:54727/${apiPath}`;
 
   const configValues = {
     local: {
