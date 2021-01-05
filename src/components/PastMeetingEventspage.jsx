@@ -5,16 +5,14 @@ import PastMETable from "./PastMETable";
 import PastMEHeaders from "./PastMEHeaders";
 import PastMERows from "./PastMERows";
 import ReactHtmlParser from "react-html-parser";
+import { TableBody } from "@baltimorecounty/dotgov-components";
 
-const PastMeetingEventsPage = props => {
+const PastMeetingEventsPage = (props) => {
   const [
-    { pastMeetingEvents = [], hasError, isLoading }
+    { pastMeetingEvents = [], hasError, isLoading },
   ] = usePastMeetingEvents();
 
-  const {
-    informationHeader,
-    informationAbout
-  } = window.pastmeetings;
+  const { informationHeader, informationAbout } = window.pastmeetings;
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -38,16 +36,17 @@ const PastMeetingEventsPage = props => {
             ) : (
               <div id="dg_main-content">
                 {ReactHtmlParser(informationHeader)}
-                {ReactHtmlParser(informationAbout)} 
+                {ReactHtmlParser(informationAbout)}
                 <PastMETable id="responsive-main-table" className="display">
                   <PastMEHeaders />
-                  <PastMERows data={records} />
+                  <TableBody>
+                    <PastMERows data={records} />
+                  </TableBody>
                 </PastMETable>
               </div>
             )}
           </div>
-          <div className="col-md-4 col-sm-12">
-          </div>
+          <div className="col-md-4 col-sm-12"></div>
         </div>
       </div>
     </div>

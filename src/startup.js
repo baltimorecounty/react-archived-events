@@ -2,9 +2,9 @@ import { Config } from "@baltimorecounty/javascript-utilities";
 
 const { setConfig } = Config;
 
-const apiPath = "/api/hub/structuredContent/Events";
-const testApiRoot = `https://testservices.baltimorecountymd.gov${apiPath}`;
-const prodApiRoot = `https://services.baltimorecountymd.gov${apiPath}`;
+const apiPath = "api/hub/structuredContent/Events";
+const testApiRoot = `https://testservices.baltimorecountymd.gov/${apiPath}`;
+const prodApiRoot = `https://services.baltimorecountymd.gov/${apiPath}`;
 
 /**
  * Run Startup Code
@@ -15,7 +15,7 @@ const Run = () => {
   const localApiRoot =
     window.location.hostname.indexOf("beta") > -1
       ? testApiRoot
-      : `//localhost:54727${apiPath}`;
+      : `//localhost:54727/${apiPath}`;
 
   const configValues = {
     local: {

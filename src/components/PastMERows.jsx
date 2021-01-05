@@ -14,7 +14,7 @@ const PastMERows = (props) => {
 
   return recordsToDisplay.map((item, i) => (
     
-    <TableBody key={`tbody-${i}`}>
+    
       <TableRow key={`tr-${i}`}>
         <TableCell key={`tdStatus-${i}`}>{item.name}</TableCell>
         <TableCell key={`tdURL-${i}`}>
@@ -32,7 +32,7 @@ const PastMERows = (props) => {
           <strong>Time:</strong><div>{item.startDate.split('T')[1]}</div>
         </TableCell>
       </TableRow>
-    </TableBody>
+
   ));
 };
 
