@@ -19,17 +19,17 @@ const Run = () => {
 
   const configValues = {
     local: {
-      apiRoot: localApiRoot,
+      apiRoot: localApiRoot
     },
     development: {
-      apiRoot: testApiRoot,
+      apiRoot: testApiRoot
     },
     staging: {
-      apiRoot: testApiRoot,
+      apiRoot: testApiRoot
     },
     production: {
-      apiRoot: prodApiRoot,
-    },
+      apiRoot: prodApiRoot
+    }
   };
 
   setConfig(configValues);

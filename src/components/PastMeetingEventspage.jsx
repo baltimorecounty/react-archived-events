@@ -7,12 +7,13 @@ import PastMERows from "./PastMERows";
 import ReactHtmlParser from "react-html-parser";
 import { TableBody } from "@baltimorecounty/dotgov-components";
 
-const PastMeetingEventsPage = (props) => {
+const PastMeetingEventsPage = props => {
+  const { informationHeader, informationAbout, calendarName } = window.pastmeetings;
   const [
-    { pastMeetingEvents = [], hasError, isLoading },
-  ] = usePastMeetingEvents();
+    { pastMeetingEvents = [], hasError, isLoading }
+  ] = usePastMeetingEvents(calendarName);
 
-  const { informationHeader, informationAbout } = window.pastmeetings;
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   });
