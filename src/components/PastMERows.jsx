@@ -8,10 +8,22 @@ const PastMERows = (props) => {
   const recordsToDisplay = data.filter(
     ({ name }) => name !== "Baltimore County Government"
   );
+
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
       <TableCell key={`tdInfo-${i}`}>
-        <div>{item.startDate.split("T")[0]}</div>
+        <div>
+          {new Date(item.startDate.split("T")[0]).toLocaleDateString(
+            undefined,
+            options
+          )}
+        </div>
       </TableCell>
       <TableCell key={`tdStatus-${i}`}>
         <p>
