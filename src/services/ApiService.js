@@ -15,9 +15,9 @@ const GetStatus = () =>
 /**
  * Get Past Meeting Events Data from Service
  */
-const GetPastMeetingEvents = (calendarName = "Aging") => 
+const GetPastMeetingEvents = (calendarName = "Aging" , type="") => 
 axios
-  .get(`${getValue("apiRoot")}?calendarName=${calendarName}`)
+  .get(`${getValue("apiRoot")}?calendarName=${calendarName}&type=${type}`)
   .then(({ status, data }) => (status === 200 ? data : []));
 // {
 //   //?calendarName=Aging

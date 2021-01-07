@@ -8,10 +8,10 @@ import ReactHtmlParser from "react-html-parser";
 import { TableBody } from "@baltimorecounty/dotgov-components";
 
 const PastMeetingEventsPage = props => {
-  const { informationHeader, informationAbout, calendarName } = window.pastmeetings;
+        const { informationHeader, informationAbout, calendarName, type } = window.pastmeetings;
   const [
     { pastMeetingEvents = [], hasError, isLoading }
-  ] = usePastMeetingEvents(calendarName);
+  ] = usePastMeetingEvents(calendarName, type);
 
   
   useEffect(() => {
