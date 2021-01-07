@@ -15,10 +15,10 @@ const PastMERows = props => {
         <p>
           <a href={item.url}>{item.name} </a>
         </p>
-        <p>{ReactHtmlParser(item.description)}</p>
+     
       </TableCell>
       <TableCell key={`tdURL-${i}`}>
-        <p>{item.location}</p>
+      <p>{ReactHtmlParser(item.description)}</p>
       </TableCell>
       <TableCell key={`tdInfo-${i}`}>
         <strong>Date:</strong>

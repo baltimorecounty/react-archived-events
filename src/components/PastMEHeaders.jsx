@@ -10,7 +10,7 @@ const PastMEHeaders = (props) => {
     <TableHead>
       <TableRow>
         <TableHeadCell key="StatusHeader">Name</TableHeadCell>
-        <TableHeadCell key="AgencyHeader">Location</TableHeadCell>
+        <TableHeadCell key="AgencyHeader">Description</TableHeadCell>
         <TableHeadCell key="InformationHeader">Information</TableHeadCell>
       </TableRow>
     </TableHead>
