@@ -31,7 +31,7 @@ const PastMeetingEventsPage = props => {
     <div className="dg_internal-template">
       <div className="container">
         <div className="row">
-          <div className="">
+         
             {isLoading ? (
               <p>{`Loading Past Meeting and Events Information...`}</p>
             ) : (
@@ -46,7 +46,7 @@ const PastMeetingEventsPage = props => {
                 </PastMETable>
               </div>
             )}
-          </div>
+          
           <div className="col-md-4 col-sm-12"></div>
         </div>
       </div>
