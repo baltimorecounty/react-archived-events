@@ -22,8 +22,8 @@ const usePastMeetingEvents = (calendarName, type) => {
     {
       pastMeetingEvents,
       hasError,
-      isLoading
-    }
+      isLoading,
+    },
   ];
 };
 

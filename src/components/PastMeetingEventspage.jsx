@@ -13,7 +13,6 @@ const PastMeetingEventsPage = props => {
     { pastMeetingEvents = [], hasError, isLoading }
   ] = usePastMeetingEvents(calendarName, type);
 
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -31,7 +30,7 @@ const PastMeetingEventsPage = props => {
     <div className="dg_internal-template">
       <div className="container">
         <div className="row">
-         
+          <div>
             {isLoading ? (
               <p>{`Loading Past Meeting and Events Information...`}</p>
             ) : (
@@ -46,8 +45,7 @@ const PastMeetingEventsPage = props => {
                 </PastMETable>
               </div>
             )}
-          
-          <div className="col-md-4 col-sm-12"></div>
+          </div>
         </div>
       </div>
     </div>
