@@ -17,7 +17,7 @@ const usePastMeetingEvents = (calendarName) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [calendarName]);
   return [
     {
       pastMeetingEvents,
