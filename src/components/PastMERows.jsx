@@ -2,7 +2,7 @@ import React from "react";
 import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
 import ReactHtmlParser from "react-html-parser";
 
-const PastMERows = (props) => {
+const PastMERows = props => {
   const { data } = props;
 
   const recordsToDisplay = data.filter(
@@ -10,15 +10,15 @@ const PastMERows = (props) => {
   );
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
-      <TableCell key={`tdStatus-${i}`}>{item.name}
-        <p>{ReactHtmlParser(item.description)}</p>
-        </TableCell>
-      <TableCell key={`tdURL-${i}`}>
+      <TableCell key={`tdStatus-${i}`}>
+        {" "}
         <p>
-          <a href={item.url} title="Get the latest closing information.">
-            {item.location}
-          </a>
+          <a href={item.url}>{item.name} </a>
         </p>
+        <p>{ReactHtmlParser(item.description)}</p>
+      </TableCell>
+      <TableCell key={`tdURL-${i}`}>
+        <p>{item.location}</p>
       </TableCell>
       <TableCell key={`tdInfo-${i}`}>
         <strong>Date:</strong>
