@@ -10,20 +10,16 @@ const PastMERows = (props) => {
   );
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
+      <TableCell key={`tdInfo-${i}`}>
+        <div>{item.startDate.split("T")[0]}</div>
+      </TableCell>
       <TableCell key={`tdStatus-${i}`}>
-        {" "}
         <p>
           <a href={item.url}>{item.name} </a>
         </p>
       </TableCell>
       <TableCell key={`tdURL-${i}`}>
         <p>{ReactHtmlParser(item.description)}</p>
-      </TableCell>
-      <TableCell key={`tdInfo-${i}`}>
-        <strong>Date:</strong>
-        <div>{item.startDate.split("T")[0]}</div>
-        <strong>Time:</strong>
-        <div>{item.startDate.split("T")[1]}</div>
       </TableCell>
     </TableRow>
   ));

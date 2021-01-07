@@ -8,10 +8,10 @@ import {
 const PastMEHeaders = (props) => {
   return (
     <TableHead>
-      <TableRow>
-        <TableHeadCell key="StatusHeader">Name</TableHeadCell>
-        <TableHeadCell key="AgencyHeader">Description</TableHeadCell>
-        <TableHeadCell key="InformationHeader">Information</TableHeadCell>
+      <TableRow className="eatshit">
+        <TableHeadCell key="StatusHeader">Date</TableHeadCell>
+        <TableHeadCell key="AgencyHeader">Name</TableHeadCell>
+        <TableHeadCell key="InformationHeader">Details</TableHeadCell>
       </TableRow>
     </TableHead>
   );
