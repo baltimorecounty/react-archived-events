@@ -8,7 +8,7 @@ const usePastMeetingEvents = (calendarName) => {
 
   useEffect(() => {
     GetPastMeetingEvents(calendarName)
-      .then(response => {
+      .then((response) => {
         setPastMeetingEvents(response);
       })
       .catch(() => {
@@ -22,8 +22,8 @@ const usePastMeetingEvents = (calendarName) => {
     {
       pastMeetingEvents,
       hasError,
-      isLoading
-    }
+      isLoading,
+    },
   ];
 };
 

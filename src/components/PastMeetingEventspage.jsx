@@ -7,13 +7,16 @@ import PastMERows from "./PastMERows";
 import ReactHtmlParser from "react-html-parser";
 import { TableBody } from "@baltimorecounty/dotgov-components";
 
-const PastMeetingEventsPage = props => {
-  const { informationHeader, informationAbout, calendarName } = window.pastmeetings;
+const PastMeetingEventsPage = (props) => {
+  const {
+    informationHeader,
+    informationAbout,
+    calendarName,
+  } = window.pastmeetings;
   const [
-    { pastMeetingEvents = [], hasError, isLoading }
+    { pastMeetingEvents = [], hasError, isLoading },
   ] = usePastMeetingEvents(calendarName);
 
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -31,7 +34,7 @@ const PastMeetingEventsPage = props => {
     <div className="dg_internal-template">
       <div className="container">
         <div className="row">
-          <div className="col-md-8 col-sm-12">
+          <div>
             {isLoading ? (
               <p>{`Loading Past Meeting and Events Information...`}</p>
             ) : (
@@ -47,7 +50,6 @@ const PastMeetingEventsPage = props => {
               </div>
             )}
           </div>
-          <div className="col-md-4 col-sm-12"></div>
         </div>
       </div>
     </div>
