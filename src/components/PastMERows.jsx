@@ -1,5 +1,6 @@
 import React from "react";
 import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
+import { ConvertSETags } from "../utilities/ConvertSETags";
 import ReactHtmlParser from "react-html-parser";
 
 const PastMERows = (props) => {
@@ -8,22 +9,30 @@ const PastMERows = (props) => {
   const recordsToDisplay = data.filter(
     ({ name }) => name !== "Baltimore County Government"
   );
+
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
+      <TableCell key={`tdInfo-${i}`}>
+        <div>
+          {new Date(item.startDate.split("T")[0]).toLocaleDateString(
+            undefined,
+            options
+          )}
+        </div>
+      </TableCell>
       <TableCell key={`tdStatus-${i}`}>
-        {" "}
         <p>
           <a href={item.url}>{item.name} </a>
         </p>
       </TableCell>
       <TableCell key={`tdURL-${i}`}>
-        <p>{ReactHtmlParser(item.description)}</p>
-      </TableCell>
-      <TableCell key={`tdInfo-${i}`}>
-        <strong>Date:</strong>
-        <div>{item.startDate.split("T")[0]}</div>
-        <strong>Time:</strong>
-        <div>{item.startDate.split("T")[1]}</div>
+        {ReactHtmlParser(ConvertSETags(item.description))}
       </TableCell>
     </TableRow>
   ));

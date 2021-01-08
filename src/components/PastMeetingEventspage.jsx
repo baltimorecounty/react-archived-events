@@ -12,10 +12,11 @@ const PastMeetingEventsPage = (props) => {
     informationHeader,
     informationAbout,
     calendarName,
+    type,
   } = window.pastmeetings;
   const [
     { pastMeetingEvents = [], hasError, isLoading },
-  ] = usePastMeetingEvents(calendarName);
+  ] = usePastMeetingEvents(calendarName, type);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,7 +39,7 @@ const PastMeetingEventsPage = (props) => {
             {isLoading ? (
               <p>{`Loading Past Meeting and Events Information...`}</p>
             ) : (
-              <div id="dg_main-content">
+              <div>
                 {ReactHtmlParser(informationHeader)}
                 {ReactHtmlParser(informationAbout)}
                 <PastMETable id="responsive-main-table" className="display">
