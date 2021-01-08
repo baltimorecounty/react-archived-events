@@ -9,9 +9,15 @@ const PastMEHeaders = (props) => {
   return (
     <TableHead>
       <TableRow className="eatshit">
-        <TableHeadCell key="StatusHeader">Date</TableHeadCell>
-        <TableHeadCell key="AgencyHeader">Name</TableHeadCell>
-        <TableHeadCell key="InformationHeader">Details</TableHeadCell>
+        <TableHeadCell key="StatusHeader" style={{ width: "25%" }}>
+          Date
+        </TableHeadCell>
+        <TableHeadCell key="AgencyHeader" style={{ width: "25%" }}>
+          Name
+        </TableHeadCell>
+        <TableHeadCell key="InformationHeader" style={{ width: "50%" }}>
+          Details
+        </TableHeadCell>
       </TableRow>
     </TableHead>
   );

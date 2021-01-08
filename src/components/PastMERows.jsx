@@ -1,5 +1,6 @@
 import React from "react";
 import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
+import ConvertSETags from "../utilities/ConvertSETags";
 import ReactHtmlParser from "react-html-parser";
 
 const PastMERows = (props) => {
@@ -8,7 +9,7 @@ const PastMERows = (props) => {
   const recordsToDisplay = data.filter(
     ({ name }) => name !== "Baltimore County Government"
   );
-
+  console.log(recordsToDisplay);
   const options = {
     year: "numeric",
     month: "long",
