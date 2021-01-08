@@ -1,6 +1,6 @@
 import React from "react";
 import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
-import ConvertSETags from "../utilities/ConvertSETags";
+import { ConvertSETags } from "../utilities/ConvertSETags";
 import ReactHtmlParser from "react-html-parser";
 
 const PastMERows = (props) => {
@@ -32,7 +32,7 @@ const PastMERows = (props) => {
         </p>
       </TableCell>
       <TableCell key={`tdURL-${i}`}>
-        <p>{ReactHtmlParser(item.description)}</p>
+        {ReactHtmlParser(ConvertSETags(item.description))}
       </TableCell>
     </TableRow>
   ));
