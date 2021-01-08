@@ -8,7 +8,7 @@ import {
 const PastMEHeaders = (props) => {
   return (
     <TableHead>
-      <TableRow className="eatshit">
+      <TableRow>
         <TableHeadCell key="StatusHeader" style={{ width: "25%" }}>
           Date
         </TableHeadCell>

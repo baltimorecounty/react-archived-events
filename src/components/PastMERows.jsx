@@ -9,7 +9,7 @@ const PastMERows = (props) => {
   const recordsToDisplay = data.filter(
     ({ name }) => name !== "Baltimore County Government"
   );
-  console.log(recordsToDisplay);
+
   const options = {
     year: "numeric",
     month: "long",
