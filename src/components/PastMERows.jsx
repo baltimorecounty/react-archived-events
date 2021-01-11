@@ -19,17 +19,13 @@ const PastMERows = (props) => {
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
       <TableCell key={`tdInfo-${i}`}>
-        <div>
-          {new Date(item.startDate.split("T")[0]).toLocaleDateString(
-            undefined,
-            options
-          )}
-        </div>
+        {new Date(item.startDate.split("T")[0]).toLocaleDateString(
+          undefined,
+          options
+        )}
       </TableCell>
       <TableCell key={`tdStatus-${i}`}>
-        <p>
-          <a href={item.url}>{item.name} </a>
-        </p>
+        <a href={item.url}>{item.name} </a>
       </TableCell>
       <TableCell key={`tdURL-${i}`}>
         {ReactHtmlParser(ConvertSETags(item.description))}

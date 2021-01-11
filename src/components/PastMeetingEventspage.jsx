@@ -33,26 +33,22 @@ const PastMeetingEventsPage = (props) => {
   }
   return (
     <div className="dg_internal-template">
-      <div className="container">
-        <div className="row">
-          <div>
-            {isLoading ? (
-              <p>{`Loading Past Meeting and Events Information...`}</p>
-            ) : (
-              <div>
-                {ReactHtmlParser(informationHeader)}
-                {ReactHtmlParser(informationAbout)}
-                <PastMETable id="responsive-main-table" className="display">
-                  <PastMEHeaders />
-                  <TableBody>
-                    <PastMERows data={records} />
-                  </TableBody>
-                </PastMETable>
-              </div>
-            )}
-          </div>
+      {isLoading ? (
+        <div>
+          <p>{`Loading Past Meeting and Events Information...`}</p>{" "}
         </div>
-      </div>
+      ) : (
+        <div>
+          {ReactHtmlParser(informationHeader)}
+          {ReactHtmlParser(informationAbout)}
+          <PastMETable id="responsive-main-table" className="display">
+            <PastMEHeaders />
+            <TableBody>
+              <PastMERows data={records} />
+            </TableBody>
+          </PastMETable>
+        </div>
+      )}
     </div>
   );
 };
