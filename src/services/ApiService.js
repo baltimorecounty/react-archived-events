@@ -15,18 +15,13 @@ const GetStatus = () =>
 /**
  * Get Past Meeting Events Data from Service
  */
-const GetPastMeetingEvents = (calendarName = "Aging" , type="") => 
-axios
-  .get(`${getValue("apiRoot")}?calendarName=${calendarName}&type=${type}`)
-  .then(({ status, data }) => (status === 200 ? data : []));
-// {
-//   //?calendarName=Aging
-//   var test = `${getValue("apiRoot")}?calendarName=${calendarName}`;
-//   console.log("-------test-------:" + test);
-//   return axios
-//     .get(test)
-//     .then(({ status, data }) => (status === 200 ? data : []));
-// };
-
+const GetPastMeetingEvents = (calendarName = "Countywide", type = "") =>
+  axios
+    .get(
+      `${getValue(
+        "apiRoot"
+      )}?calendarName=${calendarName}&type=${type}&RecordsPerPage=1000`
+    )
+    .then(({ status, data }) => (status === 200 ? data : []));
 
 export { GetStatus, GetPastMeetingEvents };
