@@ -19,10 +19,7 @@ const PastMERows = (props) => {
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
       <TableCell key={`tdInfo-${i}`}>
-        {new Date(item.startDate.split("T")[0]).toLocaleDateString(
-          undefined,
-          options
-        )}
+        {new Intl.DateTimeFormat("en-US", options).format(new Date(item.startDate))}
       </TableCell>
       <TableCell key={`tdStatus-${i}`}>
         <a href={item.url}>{item.name} </a>
