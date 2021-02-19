@@ -18,11 +18,9 @@ const GetStatus = () =>
 const GetPastMeetingEvents = (calendarName = "Countywide", type) =>
   axios
     .get(
-      type
-        ? `${getValue("apiRoot")}?type=${type}&RecordsPerPage=1000`
-        : `${getValue(
-            "apiRoot"
-          )}?calendarName=${calendarName}&RecordsPerPage=1000`
+      `${getValue(
+        "apiRoot"
+      )}?calendarName=${calendarName}&type=${type}&RecordsPerPage=1000`
     )
     .then(({ status, data }) => (status === 200 ? data : []));
 
