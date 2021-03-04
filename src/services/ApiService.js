@@ -20,7 +20,7 @@ const GetPastMeetingEvents = (calendarName = "Countywide", type) =>
     .get(
       `${getValue(
         "apiRoot"
-      )}?calendarName=${calendarName}&type=${type}&RecordsPerPage=1000`
+      )}&calendarName=${calendarName}&type=${type}&RecordsPerPage=1000`
     )
     .then(({ status, data }) => (status === 200 ? data : []));
 
