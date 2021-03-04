@@ -16,7 +16,7 @@ const InitializeDateValues = () => {
   return fromToDateFormat;
 };
 
-const apiPath = `api/hub/structuredContent/Events?${InitializeDateValues()}`;
+const apiPath = `api/hub/structuredContent/Events?filterdate=${InitializeDateValues()}`;
 const testApiRoot = `https://testservices.baltimorecountymd.gov/${apiPath}`;
 const prodApiRoot = `https://services.baltimorecountymd.gov/${apiPath}`;
 
