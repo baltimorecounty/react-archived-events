@@ -2,7 +2,21 @@ import { Config } from "@baltimorecounty/javascript-utilities";
 
 const { setConfig } = Config;
 
-const apiPath = "api/hub/structuredContent/Events";
+const InitializeDateValues = () => {
+  var dateFormat = require("dateformat");
+
+  const startDate = new Date().setFullYear(new Date().getFullYear() - 2);
+  const endDate = new Date().setDate(new Date().getDate() - 1);
+
+  const startDateFormat = dateFormat(startDate, "mm/dd/yyyy");
+  const endDateFormat = dateFormat(endDate, "mm/dd/yyyy");
+
+  var fromToDateFormat = startDateFormat + "," + endDateFormat;
+
+  return fromToDateFormat;
+};
+
+const apiPath = `api/hub/structuredContent/Events?${InitializeDateValues()}`;
 const testApiRoot = `https://testservices.baltimorecountymd.gov/${apiPath}`;
 const prodApiRoot = `https://services.baltimorecountymd.gov/${apiPath}`;
 
