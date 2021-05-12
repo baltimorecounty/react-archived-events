@@ -41,9 +41,9 @@ const PastMeetingEventsPage = (props) => {
           {ReactHtmlParser(informationHeader)}
           {ReactHtmlParser(informationAbout)}
           <PastMETable id="responsive-main-table" className="display">
-            <PastMEHeaders />
+            <PastMEHeaders calendarName={calendarName}/>
             <TableBody>
-              <PastMERows data={records} />
+              <PastMERows data={records} calendarName={calendarName}/>
             </TableBody>
           </PastMETable>
         </div>

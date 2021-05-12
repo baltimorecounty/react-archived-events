@@ -6,6 +6,7 @@ import {
 } from "@baltimorecounty/dotgov-components";
 
 const PastMEHeaders = (props) => {
+  const { calendarName } = props;
   return (
     <TableHead>
       <TableRow>
@@ -13,7 +14,10 @@ const PastMEHeaders = (props) => {
           Date
         </TableHeadCell>
         <TableHeadCell key="AgencyHeader">Name</TableHeadCell>
-        <TableHeadCell key="InformationHeader">Details</TableHeadCell>
+
+        {calendarName !== "liquorboardevents" ? (
+          <TableHeadCell key="InformationHeader">Details</TableHeadCell>
+        ) : null}
       </TableRow>
     </TableHead>
   );
