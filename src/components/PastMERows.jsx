@@ -1,11 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
 import ReactHtmlParser from "react-html-parser";
-import { GetPastMeetingEventsPDFURls } from "../services/ApiService";
+import useFileURL from "../hooks/useFileURL";
 
 const PastMERows = (props) => {
   const { data, calendarName } = props;
-  const [eventURL, setEventURL] = useState([]);
 
   const recordsToDisplay = data.filter(
     ({ name }) => name !== "Baltimore County Government"
@@ -17,11 +16,8 @@ const PastMERows = (props) => {
     day: "numeric",
   };
 
-  async function GetNewUrl(objectid) {
-    var results = await GetPastMeetingEventsPDFURls(objectid);
-    const { records } = results;
-    setEventURL(records[0].url);
-  }
+  const [objectID, setObjectID] = useState([]);
+  const [{ eventURL = [] }] = useFileURL(objectID);
 
   const UpdatePDFUrl = (description) => {
     var div = document.createElement("div");
@@ -31,9 +27,9 @@ const PastMERows = (props) => {
 
     for (var i = 0; i < urls.length; i++) {
       if (urls[i].hasAttribute("objectid")) {
-        var objectid = urls[i].getAttribute("objectid");
+        var objectID = urls[i].getAttribute("objectid");
 
-        GetNewUrl(objectid);
+        setObjectID(objectID);
         urls[i].href = eventURL;
       }
     }
