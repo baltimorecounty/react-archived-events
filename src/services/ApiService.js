@@ -24,4 +24,12 @@ const GetPastMeetingEvents = (calendarName = "Countywide", type) =>
     )
     .then(({ status, data }) => (status === 200 ? data : []));
 
-export { GetStatus, GetPastMeetingEvents };
+const GetPastMeetingEventsPDFURls = (
+  objectID = "B5815258D5AA3F3472A6C7365BEFD4C2"
+) =>
+  axios
+    .get(`${getValue("apiFileRoot")}?objectID=${objectID}`)
+
+    .then(({ status, data }) => (status === 200 ? data : []));
+
+export { GetStatus, GetPastMeetingEvents, GetPastMeetingEventsPDFURls };

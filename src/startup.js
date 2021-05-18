@@ -17,32 +17,36 @@ const InitializeDateValues = () => {
 };
 
 const apiPath = `api/hub/structuredContent/Events?filterdate=${InitializeDateValues()}`;
+const apiFilePath = `api/hub/structuredContent/Events/FileUrl`;
+
+const localApiRoot = `http://localhost:54727/${apiPath}`;
 const testApiRoot = `https://testservices.baltimorecountymd.gov/${apiPath}`;
 const prodApiRoot = `https://services.baltimorecountymd.gov/${apiPath}`;
+
+const localApiFileRoot = `http://localhost:54727/${apiFilePath}`;
+const testApiFileRoot = `https://testservices.baltimorecountymd.gov/${apiFilePath}`;
+const prodApiFileRoot = `https://services.baltimorecountymd.gov/${apiFilePath}`;
 
 /**
  * Run Startup Code
  */
 const Run = () => {
-  // HACK - the Config utiltiy does not account for beta.
-  // TODO: This will need to be addressed when we get closer to launch
-  const localApiRoot =
-    window.location.hostname.indexOf("beta") > -1
-      ? testApiRoot
-      : `//localhost:54727/${apiPath}`;
-
   const configValues = {
     local: {
       apiRoot: localApiRoot,
+      apiFileRoot: localApiFileRoot,
     },
     development: {
       apiRoot: testApiRoot,
+      apiFileRoot: testApiFileRoot,
     },
     staging: {
       apiRoot: testApiRoot,
+      apiFileRoot: testApiFileRoot,
     },
     production: {
       apiRoot: prodApiRoot,
+      apiFileRoot: prodApiFileRoot,
     },
   };
 
