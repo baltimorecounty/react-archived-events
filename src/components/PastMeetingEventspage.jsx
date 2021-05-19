@@ -17,9 +17,7 @@ const PastMeetingEventsPage = (props) => {
     window.scrollTo(0, 0);
   });
 
-  const { records = [] } = pastMeetingEvents;
-
-  
+  //const { records = [] } = pastMeetingEvents;
 
   if (hasError) {
     return (
@@ -43,7 +41,7 @@ const PastMeetingEventsPage = (props) => {
             <PastMEHeaders calendarName={calendarName} />
             <TableBody>
               <PastMERows
-                data={records}
+                data={pastMeetingEvents}
                 calendarName={calendarName}
               />
             </TableBody>

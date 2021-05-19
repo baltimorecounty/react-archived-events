@@ -1,6 +1,5 @@
 import { Config } from "@baltimorecounty/javascript-utilities";
 import axios from "axios";
-import Fetch from "./Fetch";
 
 const { getValue } = Config;
 

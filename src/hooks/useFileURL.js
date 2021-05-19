@@ -9,7 +9,8 @@ const useFileURL = (objectid) => {
   useEffect(() => {
     GetPastMeetingEventsPDFURls(objectid)
       .then((response) => {
-        setEventURL(response);
+        const { records } = response;
+        setEventURL(records[0].url);
       })
       .catch(() => {
         setHasError(false);
