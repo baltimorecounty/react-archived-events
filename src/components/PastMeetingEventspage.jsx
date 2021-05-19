@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import usePastMeetingEvents from "../hooks/usePastMeetingEvents";
-import { GetPastMeetingEventsPDFURls } from "../services/ApiService";
+
 import PastMETable from "./PastMETable";
 import PastMEHeaders from "./PastMEHeaders";
 import PastMERows from "./PastMERows";
@@ -19,31 +19,7 @@ const PastMeetingEventsPage = (props) => {
 
   const { records = [] } = pastMeetingEvents;
 
-  const UpdatePDFUrl = () => {
-    records.forEach(async (element) => {
-      var div = document.createElement("div");
-      div.innerHTML = element.description;
-
-      var object = div.firstChild;
-      var urls = object.getElementsByTagName("a");
-
-      for (var i = 0; i < urls.length; i++) {
-        if (urls[i].hasAttribute("objectid")) {
-          var objectID = urls[i].getAttribute("objectid");
-          var data = await GetPastMeetingEventsPDFURls(objectID);
-
-          const { records } = data;
-
-          urls[i].href =
-            "https://resources.baltimorecountymd.gov" + records[0].url;
-        }
-      }
-
-      element.description = object.outerHTML;
-    });
-  };
-
-  UpdatePDFUrl();
+  
 
   if (hasError) {
     return (
@@ -66,7 +42,10 @@ const PastMeetingEventsPage = (props) => {
           <PastMETable id="responsive-main-table" className="display">
             <PastMEHeaders calendarName={calendarName} />
             <TableBody>
-              <PastMERows data={records} calendarName={calendarName} />
+              <PastMERows
+                data={records}
+                calendarName={calendarName}
+              />
             </TableBody>
           </PastMETable>
         </div>
