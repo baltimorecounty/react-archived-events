@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
 import ReactHtmlParser from "react-html-parser";
-import useFileURL from "../hooks/useFileURL";
+
 
 const PastMERows = (props) => {
   const { data, calendarName } = props;
@@ -10,32 +10,15 @@ const PastMERows = (props) => {
     ({ name }) => name !== "Baltimore County Government"
   );
 
+
+
   const options = {
     year: "numeric",
     month: "long",
     day: "numeric",
   };
 
-  const [objectID, setObjectID] = useState([]);
-  const [{ eventURL = [] }] = useFileURL(objectID);
-
-  const UpdatePDFUrl = (description) => {
-    var div = document.createElement("div");
-    div.innerHTML = description;
-    var element = div.firstChild;
-    var urls = element.getElementsByTagName("a");
-
-    for (var i = 0; i < urls.length; i++) {
-      if (urls[i].hasAttribute("objectid")) {
-        var objectID = urls[i].getAttribute("objectid");
-
-        setObjectID(objectID);
-        urls[i].href = eventURL;
-      }
-    }
-
-    return ReactHtmlParser(element.outerHTML);
-  };
+ console.log(recordsToDisplay)
 
   return recordsToDisplay.map((item, i) => (
     <TableRow key={`tr-${i}`}>
@@ -49,7 +32,7 @@ const PastMERows = (props) => {
       </TableCell>
       {calendarName !== "liquorboardevents" ? (
         <TableCell key={`tdURL-${i}`}>
-          {UpdatePDFUrl(item.description)}
+          {ReactHtmlParser(item.description)}
         </TableCell>
       ) : null}
     </TableRow>
