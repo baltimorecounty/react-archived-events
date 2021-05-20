@@ -5,7 +5,7 @@ import {
 } from "../services/ApiService";
 
 const usePastMeetingEvents = (calendarName, type) => {
-  const newDataCount = useRef(0);
+  const newDataCount = useRef(0); //Prevents an infinite loop
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [newPastMeetingEvents, setNewPastMeetingEvents] = useState([]);
@@ -57,7 +57,7 @@ const usePastMeetingEvents = (calendarName, type) => {
         }
       })
       .then(() => {
-        newDataCount.current++;
+        newDataCount.current++; //Once the new data set has been created we dont want this to keep running so we increase by one which shuts down the loop
         setPastMeetingEvents(newPastMeetingEvents);
       })
       .catch(() => {
