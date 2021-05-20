@@ -26,6 +26,7 @@ const PastMeetingEventsPage = (props) => {
       </p>
     );
   }
+
   return (
     <div className="dg_internal-template">
       {isLoading ? (
@@ -52,4 +53,3 @@ const PastMeetingEventsPage = (props) => {
 };
 
 export default PastMeetingEventsPage;
-
