@@ -43,7 +43,7 @@ const usePastMeetingEvents = (calendarName, type) => {
                   default:
                     urlDomain = "https://resources.baltimorecountymd.gov";
                 }
-                console.log(urlParts);
+
                 urls[i].href = urlDomain + records[0].url;
               }
 
@@ -54,14 +54,12 @@ const usePastMeetingEvents = (calendarName, type) => {
 
         setNewPastMeetingEvents(newData);
       })
-      .then(() => {
-        setPastMeetingEvents(newPastMeetingEvents);
-      })
       .catch(() => {
         setHasError(false);
       })
       .finally(() => {
         setIsLoading(false);
+        setPastMeetingEvents(newPastMeetingEvents);
       });
   }, [calendarName, type, newPastMeetingEvents]);
   return [
