@@ -30,8 +30,21 @@ const usePastMeetingEvents = (calendarName, type) => {
                 const response = await GetPastMeetingEventsPDFURls(objectID);
                 const { records } = response;
 
-                urls[i].href =
-                  "https://resources.baltimorecountymd.gov" + records[0].url;
+                var urlParts = records[0].url.split("/");
+                var urlDomain = "";
+
+                switch (urlParts[1]) {
+                  case "Document":
+                    urlDomain = "https://resources.baltimorecountymd.gov";
+                    break;
+                  case "departments":
+                    urlDomain = "https://www.baltimorecountymd.gov";
+                    break;
+                  default:
+                    urlDomain = "https://resources.baltimorecountymd.gov";
+                }
+                console.log(urlParts);
+                urls[i].href = urlDomain + records[0].url;
               }
 
               item.description = object.outerHTML;
