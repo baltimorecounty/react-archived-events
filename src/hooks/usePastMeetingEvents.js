@@ -16,7 +16,6 @@ const usePastMeetingEvents = (calendarName, type) => {
         const { records } = response;
         let newData = [...records];
 
-        console.log(newData);
         newData.forEach(async (item) => {
           if (item.description.includes("objectid")) {
             var div = document.createElement("div");
