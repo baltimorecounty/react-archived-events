@@ -10,6 +10,7 @@ import { TableBody } from "@baltimorecounty/dotgov-components";
 const PastMeetingEventsPage = (props) => {
   const { informationHeader, informationAbout, calendarName, type } =
     window.pastmeetings;
+    
   const [{ pastMeetingEvents = [], hasError, isLoading }] =
     usePastMeetingEvents(calendarName, type);
 

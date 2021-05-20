@@ -7,14 +7,17 @@ import {
 const usePastMeetingEvents = (calendarName, type) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [newPastMeetingEvents, setNewPastMeetingEvents] = useState([]);
   const [pastMeetingEvents, setPastMeetingEvents] = useState([]);
 
   useEffect(() => {
     GetPastMeetingEvents(calendarName, type)
       .then((response) => {
         const { records } = response;
-        console.log(records);
-        records.forEach(async(item) => {
+        let newData = [...records];
+
+        console.log(newData);
+        newData.forEach(async (item) => {
           if (item.description.includes("objectid")) {
             var div = document.createElement("div");
             div.innerHTML = item.description;
@@ -27,7 +30,7 @@ const usePastMeetingEvents = (calendarName, type) => {
                 var objectID = urls[i].getAttribute("objectid");
                 const response = await GetPastMeetingEventsPDFURls(objectID);
                 const { records } = response;
-               
+
                 urls[i].href =
                   "https://resources.baltimorecountymd.gov" + records[0].url;
               }
@@ -37,17 +40,18 @@ const usePastMeetingEvents = (calendarName, type) => {
           }
         });
 
-        console.log(records);
-        setPastMeetingEvents(records);
+        setNewPastMeetingEvents(newData);
       })
-
+      .then(() => {
+        setPastMeetingEvents(newPastMeetingEvents);
+      })
       .catch(() => {
         setHasError(false);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [calendarName, type]);
+  }, [calendarName, type, newPastMeetingEvents]);
   return [
     {
       pastMeetingEvents,
