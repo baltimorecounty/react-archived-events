@@ -3,7 +3,7 @@ import { TableCell, TableRow } from "@baltimorecounty/dotgov-components";
 import ReactHtmlParser from "react-html-parser";
 
 const PastMERows = (props) => {
-  const { data } = props;
+  const { data, calendarName } = props;
 
   const recordsToDisplay = data.filter(
     ({ name }) => name !== "Baltimore County Government"
@@ -25,9 +25,11 @@ const PastMERows = (props) => {
       <TableCell key={`tdStatus-${i}`}>
         <a href={item.url}>{item.name} </a>
       </TableCell>
-      <TableCell key={`tdURL-${i}`}>
-        {ReactHtmlParser(item.description)}
-      </TableCell>
+      {calendarName !== "liquorboardevents" ? (
+        <TableCell key={`tdURL-${i}`}>
+          {ReactHtmlParser(item.description)}
+        </TableCell>
+      ) : null}
     </TableRow>
   ));
 };

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import usePastMeetingEvents from "../hooks/usePastMeetingEvents";
+
 import PastMETable from "./PastMETable";
 import PastMEHeaders from "./PastMEHeaders";
 import PastMERows from "./PastMERows";
@@ -7,21 +8,16 @@ import ReactHtmlParser from "react-html-parser";
 import { TableBody } from "@baltimorecounty/dotgov-components";
 
 const PastMeetingEventsPage = (props) => {
-  const {
-    informationHeader,
-    informationAbout,
-    calendarName,
-    type,
-  } = window.pastmeetings;
-  const [
-    { pastMeetingEvents = [], hasError, isLoading },
-  ] = usePastMeetingEvents(calendarName, type);
+  const { informationHeader, informationAbout, calendarName, type } =
+    window.pastmeetings;
+
+  const [{ pastMeetingEvents = [], hasError, isLoading }] =
+    usePastMeetingEvents(calendarName, type);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
-  const { records = [] } = pastMeetingEvents;
   if (hasError) {
     return (
       <p>
@@ -30,6 +26,7 @@ const PastMeetingEventsPage = (props) => {
       </p>
     );
   }
+
   return (
     <div className="dg_internal-template">
       {isLoading ? (
@@ -41,9 +38,12 @@ const PastMeetingEventsPage = (props) => {
           {ReactHtmlParser(informationHeader)}
           {ReactHtmlParser(informationAbout)}
           <PastMETable id="responsive-main-table" className="display">
-            <PastMEHeaders />
+            <PastMEHeaders calendarName={calendarName} />
             <TableBody>
-              <PastMERows data={records} />
+              <PastMERows
+                data={pastMeetingEvents}
+                calendarName={calendarName}
+              />
             </TableBody>
           </PastMETable>
         </div>
