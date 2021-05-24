@@ -19,38 +19,41 @@ const usePastMeetingEvents = (calendarName, type) => {
           let newData = [...records];
 
           newData.forEach(async (item) => {
-            if (item.description.includes("objectid")) {
-              var div = document.createElement("div");
-              div.innerHTML = item.description;
+            var div = document.createElement("div");
+            div.innerHTML = item.description;
 
-              var object = div.firstChild;
-              var urls = object.getElementsByTagName("a");
+            var object = div.firstChild;
+            var urls = object.getElementsByTagName("a");
 
-              for (var i = 0; i < urls.length; i++) {
-                if (urls[i].hasAttribute("objectid")) {
-                  var objectID = urls[i].getAttribute("objectid");
-                  const response = await GetPastMeetingEventsPDFURls(objectID);
-                  const { records } = response;
+            for (var i = 0; i < urls.length; i++) {
+              if (urls[i].href.indexOf(".pdf") > -1) {
+                urls[i].setAttribute("target", "_blank");
+              }
 
-                  var urlParts = records[0].url.split("/");
-                  var urlDomain = "";
+              if (urls[i].hasAttribute("objectid")) {
+                urls[i].setAttribute("target", "_blank");
+                var objectID = urls[i].getAttribute("objectid");
+                const response = await GetPastMeetingEventsPDFURls(objectID);
+                const { records } = response;
 
-                  switch (urlParts[1]) {
-                    case "Document":
-                      urlDomain = "https://resources.baltimorecountymd.gov";
-                      break;
-                    case "departments":
-                      urlDomain = "https://www.baltimorecountymd.gov";
-                      break;
-                    default:
-                      urlDomain = "https://resources.baltimorecountymd.gov";
-                  }
+                var urlParts = records[0].url.split("/");
+                var urlDomain = "";
 
-                  urls[i].href = urlDomain + records[0].url;
+                switch (urlParts[1]) {
+                  case "Document":
+                    urlDomain = "https://resources.baltimorecountymd.gov";
+                    break;
+                  case "departments":
+                    urlDomain = "https://www.baltimorecountymd.gov";
+                    break;
+                  default:
+                    urlDomain = "https://resources.baltimorecountymd.gov";
                 }
 
-                item.description = object.outerHTML;
+                urls[i].href = urlDomain + records[0].url;
               }
+
+              item.description = object.outerHTML;
             }
           });
           setNewPastMeetingEvents(newData);
