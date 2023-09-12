@@ -8,7 +8,7 @@ import ReactHtmlParser from "react-html-parser";
 import { TableBody } from "@baltimorecounty/dotgov-components";
 
 const PastMeetingEventsPage = (props) => {
-  const { informationHeader, informationAbout, calendarName, type } =
+  const { informationHeader, informationAbout, calendarName, type, order } =
     window.pastmeetings;
 
   const [{ pastMeetingEvents = [], hasError, isLoading }] =
@@ -38,7 +38,7 @@ const PastMeetingEventsPage = (props) => {
           {ReactHtmlParser(informationHeader)}
           {ReactHtmlParser(informationAbout)}
           <PastMETable id="responsive-main-table" className="display">
-            <PastMEHeaders calendarName={calendarName} />
+            <PastMEHeaders calendarName={calendarName} order ={order} />
             <TableBody>
               <PastMERows
                 data={pastMeetingEvents}
