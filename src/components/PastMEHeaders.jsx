@@ -6,9 +6,9 @@ import {
 } from "@baltimorecounty/dotgov-components";
 
 const PastMEHeaders = (props) => {
-  const { calendarName, order } = props;
+  const { calendarName, order = "" } = props;
 
-  var orderBy = order === "asc" ? "order-by-asc": "order-by"
+  const orderBy = order === "asc" ? "order-by-asc": "order-by"
 
   return (
     <TableHead>
